@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Beautiful daily quotes for inspiration and motivation">
-    <meta name="theme-color" content="#0f0f23">
-    <title></title>
+    <meta name="theme-color" content="#1e1e3f">
+    <title>Millennium's Wisdom</title>
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -15,8 +15,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- Google Fonts for Georgian text -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@700&display=swap" rel="stylesheet">
+    <!-- Google Fonts for Georgian and Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Serif+Georgian:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -26,33 +26,32 @@
         }
 
         :root {
-            --bg-primary: #0f0f23;
-            --bg-secondary: #1a1a2e;
-            --bg-card: rgba(26, 26, 46, 0.8);
-            --text-primary: #e0e0e0;
-            --text-secondary: #a0a0a0;
-            --accent: #6366f1;
-            --accent-hover: #5855eb;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg-primary: #1e1e3f;
+            --bg-secondary: #2a2a4e;
+            --bg-card: rgba(42, 42, 78, 0.85);
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0cc;
+            --accent: #7c3aed;
+            --accent-hover: #6d28d9;
+            --gradient: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            --shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            --border: rgba(255, 255, 255, 0.15);
         }
 
         body {
             font-family: 'Inter', 'Noto Serif Georgian', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
             touch-action: manipulation;
         }
 
-        /* Apply bold font for Georgian text */
         [lang="ka"], .georgian {
             font-family: 'Noto Serif Georgian', serif;
-            font-weight: 700;
+            font-weight: 400;
         }
 
         body::before {
@@ -63,23 +62,21 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 30% 70%, rgba(124, 58, 237, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(236, 72, 153, 0.2) 0%, transparent 50%);
             z-index: -1;
-            animation: float 20s ease-in-out infinite;
+            animation: float 25s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(1deg); }
-            66% { transform: translateY(20px) rotate(-1deg); }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
         }
 
         .container {
-            max-width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 1.5rem;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -91,50 +88,53 @@
 
         .header {
             text-align: center;
-            margin-bottom: 2rem;
-            animation: slideDown 0.8s ease-out;
+            margin-bottom: 2.5rem;
+            animation: slideDown 0.6s ease-out;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 700;
             background: var(--gradient);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
-            animation: glow 3s ease-in-out infinite alternate;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+            animation: glow 4s ease-in-out infinite alternate;
         }
 
         @keyframes glow {
-            from { filter: drop-shadow(0 0 20px rgba(102, 102, 241, 0.5)); }
-            to { filter: drop-shadow(0 0 30px rgba(102, 102, 241, 0.8)); }
+            from { filter: drop-shadow(0 0 15px rgba(124, 58, 237, 0.4)); }
+            to { filter: drop-shadow(0 0 25px rgba(124, 58, 237, 0.7)); }
         }
 
         .subtitle {
             color: var(--text-secondary);
-            font-size: 0.7rem;
-            opacity: 0.8;
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .quote-card {
             background: var(--bg-card);
-            backdrop-filter: blur(30px);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 2rem 1.5rem;
-            max-width: 90%;
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 700px;
             width: 100%;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: var(--shadow);
             text-align: center;
             position: relative;
-            animation: fadeInUp 1s ease-out 0.3s both;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .quote-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .quote-card::before {
@@ -145,23 +145,26 @@
             right: 0;
             bottom: 0;
             background: var(--gradient);
-            border-radius: 24px;
+            border-radius: 20px;
             padding: 2px;
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask-composite: exclude;
-            opacity: 0.3;
+            opacity: 0.25;
             z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .quote-card:hover::before {
+            opacity: 0.4;
         }
 
         .quote-text {
-            font-size: 1.4rem;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            margin-bottom: 1.75rem;
+            font-weight: 400;
             color: var(--text-primary);
-            position: relative;
-            animation: typewriter 2s ease-out 0.8s both;
-            letter-spacing: 0.02em;
+            animation: fadeIn 1s ease-out 0.5s both;
         }
 
         .quote-text::before,
@@ -169,53 +172,61 @@
             content: '"';
             font-size: 2rem;
             color: var(--accent);
-            opacity: 0.4;
-            font-weight: 100;
+            opacity: 0.5;
+            font-weight: 300;
+            position: absolute;
+        }
+
+        .quote-text::before {
+            top: -0.5rem;
+            left: -1rem;
+        }
+
+        .quote-text::after {
+            bottom: -0.5rem;
+            right: -1rem;
         }
 
         .quote-author {
-            font-size: 1rem;
-            color: var(--accent);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
             font-weight: 500;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out 1.5s both;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            animation: fadeIn 0.8s ease-out 1s both;
+            letter-spacing: 0.05em;
         }
 
         .controls {
             display: flex;
-            gap: 0.8rem;
+            gap: 1rem;
             justify-content: center;
-            margin-top: 2rem;
-            animation: slideUp 0.8s ease-out 0.6s both;
+            margin-top: 2.5rem;
+            animation: slideUp 0.6s ease-out 0.4s both;
         }
 
         .btn {
             background: var(--gradient);
             border: none;
-            border-radius: 50px;
-            padding: 1rem 2rem;
+            border-radius: 12px;
+            padding: 1rem 2.5rem;
             font-size: 1rem;
             font-weight: 600;
             color: white;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 25px rgba(102, 102, 241, 0.4);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             touch-action: manipulation;
         }
 
         .btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(102, 102, 241, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+            background: linear-gradient(135deg, #9f67ff 0%, #f472b6 100%);
         }
 
         .btn:active {
-            transform: translateY(-1px) scale(1.02);
+            transform: translateY(0);
         }
 
         .btn::before {
@@ -225,8 +236,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.4s;
         }
 
         .btn:hover::before {
@@ -235,13 +246,13 @@
 
         .loading {
             display: none;
-            width: 30px;
-            height: 30px;
-            border: 3px solid rgba(102, 102, 241, 0.3);
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(124, 58, 237, 0.3);
             border-top: 3px solid var(--accent);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 1.5rem auto;
+            animation: spin 0.8s linear infinite;
+            margin: 1rem auto;
         }
 
         @keyframes spin {
@@ -250,17 +261,17 @@
         }
 
         @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
+            from { transform: translateY(-30px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
         @keyframes fadeInUp {
-            from { transform: translateY(50px); opacity: 0; }
+            from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
         @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
+            from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
@@ -269,61 +280,57 @@
             to { opacity: 1; }
         }
 
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
         .install-prompt {
             position: fixed;
-            bottom: 1rem;
-            right: 1rem;
+            bottom: 1.5rem;
+            right: 1.5rem;
             background: var(--gradient);
             color: white;
-            padding: 0.8rem;
-            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
             box-shadow: var(--shadow);
             cursor: pointer;
             display: none;
             z-index: 1000;
             animation: slideInRight 0.5s ease-out;
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
         @keyframes slideInRight {
-            from { transform: translateX(100px); opacity: 0; }
+            from { transform: translateX(50px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 0.5rem;
+                padding: 1rem;
             }
 
             .quote-card {
-                padding: 1.5rem 1rem;
-                margin: 0.5rem;
+                padding: 1.5rem;
+                margin: ambitiou
                 border-radius: 16px;
             }
 
             .quote-text {
-                font-size: 1.2rem;
-                line-height: 1.4;
+                font-size: 1.3rem;
+                line-height: 1.5;
             }
 
             .logo {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .btn {
-                padding: 0.8rem 1.5rem;
+                padding: 0.8rem 2rem;
                 font-size: 0.9rem;
             }
 
             .install-prompt {
-                bottom: 0.5rem;
-                right: 0.5rem;
-                padding: 0.6rem;
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.6rem 1.2rem;
             }
         }
     </style>
@@ -331,8 +338,8 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1 class="logo">Millennium`s Wisdom</h1>
-            <p class="subtitle">პრაქტიკა არის გამოცდილება, რომელსაც მივყავართ სრულყოფილებამდე</p>
+            <h1 class="logo">Millennium's Wisdom</h1>
+            <p class="subtitle georgian">პრაქტიკა არის გამოცდილება, რომელსაც მივყავართ სრულყოფილებამდე</p>
         </header>
 
         <div class="quote-card">
@@ -349,7 +356,7 @@
     </div>
 
     <div class="install-prompt" id="installPrompt">
-        <div>📱 Install Millennium`s Wisdom</div>
+        <div>📱 Install Millennium's Wisdom</div>
     </div>
 
     <script>
@@ -357,17 +364,17 @@
             constructor() {
                 this.allQuotes = [
                     { text: "არასოდეს მიიღო ღალატი ვინმესგან, აპატიე, მაგრამ არასოდეს დაივიწყო", author: "Millennium" },
-                  { text: "დააწესე საზღვრები სხვებთან, თორემ შენი სიკეთის გამო გაწყენინებენ.", author: "Millennium" },
-                  { text: "არასოდეს აიძულო ვინმე, რომ შენ აგირჩიოს, სანაცვლოდ, მიეცი ადამიანებს თავისუფლება, გააკეთონ ის, რაც სურთ.  ", author: "Millennium" },
-                  { text: "განივითარე უნარი, თქვა უარი იმაზე, რაც შენთვის სარგებელს არ მოაქვს.", author: "გMillennium" },
-                  { text: "ნაკლები ილაპარაკე და შეინარჩუნე შენი ცხოვრება საიდუმლოდ", author: "Millennium" },
-                  { text: "არაფერი მიიღო ახლოს გულთან, ეცადე იყო ნაკლებად ემოციური და უფრო მშვიდი", author: "Millennium" },
-                  { text: "ზოგჯერ რთული გამოცდილება გჭირდება, რათა აღმოაჩინო შენი ნამდვილი არსი", author: "Millennium" },
-                  { text: "იმუშავე იმაზე, რასაც ვერავინ წაგართმევს.", author: "Millennium" },
-                  { text: "ნაკლები ილაპარაკე, მეტი დააკვირდი, ყველაფერს არ სჭირდება რეაქცია", author: "Millennium" },
-                  { text: "გქონდეს ძლიერი გონება, არაფერი მიიღო ახლოს გულთან და არ ეძებო სხვებისგან დასტური", author: "Millennium" },
-                  { text: "რაც უფრო პატარა ადამიანი ხარ მით უფრო იხილავ გლობალურ საკითხებს", author: "Millennium" },
-                  { text: "იყავი შეშინებული, როცა სხვები თავდაჯერებულნი არიან, და თავდაჯერებული, როცა სხვები შეშინებულნი არიან", author: "Millennium" },
+                    { text: "დააწესე საზღვრები სხვებთან, თორემ შენი სიკეთის გამო გაწყენინებენ.", author: "Millennium" },
+                    { text: "არასოდეს აიძულო ვინმე, რომ შენ აგირჩიოს, სანაცვლოდ, მიეცი ადამიანებს თავისუფლება, გააკეთონ ის, რაც სურთ.", author: "Millennium" },
+                    { text: "განივითარე უნარი, თქვა უარი იმაზე, რაც შენთვის სარგებელს არ მოაქვს.", author: "Millennium" },
+                    { text: "ნაკლები ილაპარაკე და შეინარჩუნე შენი ცხოვრება საიდუმლოდ", author: "Millennium" },
+                    { text: "არაფერი მიიღო ახლოს გულთან, ეცადე იყო ნაკლებად ემოციური და უფრო მშვიდი", author: "Millennium" },
+                    { text: "ზოგჯერ რთული გამოცდილება გჭირდება, რათა აღმოაჩინო შენი ნამდვილი არსი", author: "Millennium" },
+                    { text: "იმუშავე იმაზე, რასაც ვერავინ წაგართმევს.", author: "Millennium" },
+                    { text: "ნაკლები ილაპარაკე, მეტი დააკვირდი, ყველაფერს არ სჭირდება რეაქცია", author: "Millennium" },
+                    { text: "გქონდეს ძლიერი გონება, არაფერი მიიღო ახლოს გულთან და არ ეძებო სხვებისგან დასტური", author: "Millennium" },
+                    { text: "რაც უფრო პატარა ადამიანი ხარ მით უფრო იხილავ გლობალურ საკითხებს", author: "Millennium" },
+                    { text: "იყავი შეშინებული, როცა სხვები თავდაჯერებულნი არიან, და თავდაჯერებული, როცა სხვები შეშინებულნი არიან", author: "Millennium" },
                     { text: "There's a time to go long, a time to go short and a time to go fishing", author: "Jesse Livermore" },
                     { text: "ნუ იყიდი იმიტომ, რომ იაფია, იყიდე, რადგან ღირებულია.", author: "კარლ აიკანი" }
                 ];
@@ -482,7 +489,7 @@
         style.textContent = `
             @keyframes fadeOut {
                 from { opacity: 1; transform: translateX(0); }
-                to { opacity: 0; transform: translateX(100px); }
+                to { opacity: 0; transform: translateX(50px); }
             }
         `;
         document.head.appendChild(style);
