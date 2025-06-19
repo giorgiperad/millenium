@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Beautiful daily quotes for inspiration and motivation">
     <meta name="theme-color" content="#0f0f23">
-    
+    <title></title>
+
     <!-- PWA Manifest -->
-    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiUXVvdGVWZXJzZSIsInNob3J0X25hbWUiOiJRdW90ZVYiLCJkZXNjcmlwdGlvbiI6IkJlYXV0aWZ1bCBkYWlseSBxdW90ZXMgZm9yIGluc3BpcmF0aW9uIiwic3RhcnRfdXJsIjoiLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiMwZjBmMjMiLCJ0aGVtZV9jb2xvciI6IiMwZjBmMjMiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCM2FXUjBhRDBpTVRJNElpQm9aV2xuYUhROUlqRXlPQ0lpSUdobGJHeHZQU0lpSUdacGJHdzlJaU5tWm1ZaUlIWnBaWGRDYjNnOUlqQWdNQ0F4TWpnZ01USTRJajQ4Y21WamRDQjNhV1IwYUQwaU1USTRJaUJvWldsbmFIUTlJakV5T0NJZ2NuZzlJalFpSUdacGJHdzlJaU0yTmpZMk5qWWlMejQ4ZEdWNGRDQjRQU0kyTkNJZ2VUMGlOalFpSUdacGJHdzlJaU0yTmpZMk5qWWlJR1p2Ym5RdGMybDZaVDBpTWpRaUlIUmxlSFF0WVc1amFHOXlQU0p0YVdSa2JHVWlQaUZzUEM5MFpYaDBQand2YzNabktRPT0iLCJzaXplcyI6IjEyOHgxMjgiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9XX0=">
-    
+    <link rel="manifest" href="/manifest.json">
+
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiByeD0iNCIgZmlsbD0iIzY2NjY2NiIvPgo8dGV4dCB4PSI2NCIgeT0iNjQiIGZpbGw9IiM2NjY2NjYiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPiFsPC90ZXh0Pgo8L3N2Zz4K">
-    
+    <link rel="apple-touch-icon" href="/icon-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Google Fonts for Georgian text -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -34,16 +39,22 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', 'Noto Serif Georgian', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            touch-action: manipulation;
         }
 
-        /* Animated background */
+        /* Apply bold font for Georgian text */
+        [lang="ka"], .georgian {
+            font-family: 'Noto Serif Georgian', serif;
+            font-weight: 700;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -66,9 +77,9 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -80,12 +91,12 @@
 
         .header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             animation: slideDown 0.8s ease-out;
         }
 
         .logo {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             background: var(--gradient);
             -webkit-background-clip: text;
@@ -102,7 +113,7 @@
 
         .subtitle {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 0.7rem;
             opacity: 0.8;
         }
 
@@ -110,9 +121,9 @@
             background: var(--bg-card);
             backdrop-filter: blur(30px);
             border: 1px solid var(--border);
-            border-radius: 32px;
-            padding: 4rem;
-            max-width: 800px;
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            max-width: 90%;
             width: 100%;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
             text-align: center;
@@ -143,9 +154,9 @@
         }
 
         .quote-text {
-            font-size: 1.8rem;
-            line-height: 1.6;
-            margin-bottom: 2.5rem;
+            font-size: 1.4rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
             font-weight: 300;
             color: var(--text-primary);
             position: relative;
@@ -156,28 +167,27 @@
         .quote-text::before,
         .quote-text::after {
             content: '"';
-            font-size: 3rem;
+            font-size: 2rem;
             color: var(--accent);
             opacity: 0.4;
             font-weight: 100;
         }
 
         .quote-author {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--accent);
             font-weight: 500;
             opacity: 0;
             animation: fadeIn 0.8s ease-out 1.5s both;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            font-size: 1rem;
         }
 
         .controls {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             justify-content: center;
-            margin-top: 3rem;
+            margin-top: 2rem;
             animation: slideUp 0.8s ease-out 0.6s both;
         }
 
@@ -185,8 +195,8 @@
             background: var(--gradient);
             border: none;
             border-radius: 50px;
-            padding: 1.2rem 2.5rem;
-            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
             font-weight: 600;
             color: white;
             cursor: pointer;
@@ -196,6 +206,7 @@
             overflow: hidden;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            touch-action: manipulation;
         }
 
         .btn:hover {
@@ -222,52 +233,15 @@
             left: 100%;
         }
 
-        .btn-secondary {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(26, 26, 46, 0.8);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .category-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-            animation: fadeIn 1s ease-out 1s both;
-        }
-
-        .pill {
-            background: rgba(102, 102, 241, 0.1);
-            border: 1px solid rgba(102, 102, 241, 0.3);
-            border-radius: 20px;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-            color: var(--accent);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .pill:hover, .pill.active {
-            background: var(--accent);
-            color: white;
-            transform: scale(1.05);
-        }
-
         .loading {
             display: none;
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             border: 3px solid rgba(102, 102, 241, 0.3);
             border-top: 3px solid var(--accent);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin: 2rem auto;
+            margin: 1.5rem auto;
         }
 
         @keyframes spin {
@@ -275,7 +249,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Animations */
         @keyframes slideDown {
             from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -301,52 +274,57 @@
             to { width: 100%; }
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            .quote-card {
-                padding: 2.5rem 2rem;
-                margin: 1rem;
-                border-radius: 24px;
-            }
-
-            .quote-text {
-                font-size: 1.4rem;
-                line-height: 1.5;
-            }
-
-            .logo {
-                font-size: 2rem;
-            }
-
-            .btn {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-        }
-
-        /* PWA Install prompt */
         .install-prompt {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 1rem;
+            right: 1rem;
             background: var(--gradient);
             color: white;
-            padding: 1rem;
+            padding: 0.8rem;
             border-radius: 12px;
             box-shadow: var(--shadow);
             cursor: pointer;
             display: none;
             z-index: 1000;
             animation: slideInRight 0.5s ease-out;
+            font-size: 0.9rem;
         }
 
         @keyframes slideInRight {
             from { transform: translateX(100px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .quote-card {
+                padding: 1.5rem 1rem;
+                margin: 0.5rem;
+                border-radius: 16px;
+            }
+
+            .quote-text {
+                font-size: 1.2rem;
+                line-height: 1.4;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .install-prompt {
+                bottom: 0.5rem;
+                right: 0.5rem;
+                padding: 0.6rem;
+            }
         }
     </style>
 </head>
@@ -357,12 +335,10 @@
             <p class="subtitle">პრაქტიკა არის გამოცდილება, რომელსაც მივყავართ სრულყოფილებამდე</p>
         </header>
 
-
-
         <div class="quote-card">
             <div class="loading" id="loading"></div>
             <div class="quote-content" id="quoteContent">
-                <p class="quote-text" id="quoteText"></p>
+                <p class="quote-text georgian" id="quoteText" lang="ka"></p>
                 <p class="quote-author" id="quoteAuthor"></p>
             </div>
         </div>
@@ -373,7 +349,7 @@
     </div>
 
     <div class="install-prompt" id="installPrompt">
-        <div>📱 ჩამოტვირთე კარაბადინი</div>
+        <div>📱 Install Millennium`s Wisdom</div>
     </div>
 
     <script>
@@ -408,8 +384,6 @@
 
             bindEvents() {
                 document.getElementById('newQuoteBtn').addEventListener('click', () => this.loadRandomQuote());
-
-                // Keyboard shortcuts
                 document.addEventListener('keydown', (e) => {
                     if (e.code === 'Space') {
                         e.preventDefault();
@@ -419,7 +393,6 @@
             }
 
             loadRandomQuoteOnStart() {
-                // Immediately show a random quote without loading animation
                 const randomQuote = this.allQuotes[Math.floor(Math.random() * this.allQuotes.length)];
                 this.displayQuoteInstantly(randomQuote);
             }
@@ -450,15 +423,12 @@
                 const quoteText = document.getElementById('quoteText');
                 const quoteAuthor = document.getElementById('quoteAuthor');
                 
-                // Animate out
                 quoteText.style.opacity = '0';
                 quoteAuthor.style.opacity = '0';
                 
                 setTimeout(() => {
                     quoteText.textContent = quote.text;
                     quoteAuthor.textContent = `— ${quote.author}`;
-                    
-                    // Animate in
                     quoteText.style.opacity = '1';
                     quoteAuthor.style.opacity = '1';
                 }, 300);
@@ -475,34 +445,16 @@
             }
 
             setupPWA() {
-                // Register service worker
                 if ('serviceWorker' in navigator) {
-                    const swCode = `
-                        const CACHE_NAME = 'quoteverse-v1';
-                        const urlsToCache = ['/'];
-                        
-                        self.addEventListener('install', event => {
-                            event.waitUntil(
-                                caches.open(CACHE_NAME)
-                                    .then(cache => cache.addAll(urlsToCache))
-                            );
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(registration => {
+                            console.log('Service Worker registered with scope:', registration.scope);
+                        })
+                        .catch(error => {
+                            console.error('Service Worker registration failed:', error);
                         });
-                        
-                        self.addEventListener('fetch', event => {
-                            event.respondWith(
-                                caches.match(event.request)
-                                    .then(response => response || fetch(event.request))
-                            );
-                        });
-                    `;
-                    
-                    const blob = new Blob([swCode], { type: 'application/javascript' });
-                    const swUrl = URL.createObjectURL(blob);
-                    
-                    navigator.serviceWorker.register(swUrl);
                 }
 
-                // Install prompt
                 let deferredPrompt;
                 window.addEventListener('beforeinstallprompt', (e) => {
                     e.preventDefault();
@@ -522,12 +474,10 @@
             }
         }
 
-        // Initialize app
         document.addEventListener('DOMContentLoaded', () => {
             new QuoteApp();
         });
 
-        // Add CSS for fadeOut animation
         const style = document.createElement('style');
         style.textContent = `
             @keyframes fadeOut {
