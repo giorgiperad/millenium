@@ -1,1 +1,21 @@
-
+{
+    "name": "Millenium`s Wisdom",
+    "short_name": "Millenium`s Wisdom",
+    "description": "Millenium`s Wisdom",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f0f23",
+    "theme_color": "#0f0f23",
+    "icons": [
+        {
+            "src": "https://ta3bviqjtxy1kv7x.public.blob.vercel-storage.com/bgc-wAyOl9axJJUu4bUqug06dN3eSLPzt4.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "https://ta3bviqjtxy1kv7x.public.blob.vercel-storage.com/bgc-wAyOl9axJJUu4bUqug06dN3eSLPzt4.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
