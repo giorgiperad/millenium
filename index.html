@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuoteVerse - Daily Inspiration</title>
+    <meta name="description" content="Beautiful daily quotes for inspiration and motivation">
+    <meta name="theme-color" content="#0f0f23">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiUXVvdGVWZXJzZSIsInNob3J0X25hbWUiOiJRdW90ZVYiLCJkZXNjcmlwdGlvbiI6IkJlYXV0aWZ1bCBkYWlseSBxdW90ZXMgZm9yIGluc3BpcmF0aW9uIiwic3RhcnRfdXJsIjoiLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiMwZjBmMjMiLCJ0aGVtZV9jb2xvciI6IiMwZjBmMjMiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCM2FXUjBhRDBpTVRJNElpQm9aV2xuYUhROUlqRXlPQ0lpSUdobGJHeHZQU0lpSUdacGJHdzlJaU5tWm1ZaUlIWnBaWGRDYjNnOUlqQWdNQ0F4TWpnZ01USTRJajQ4Y21WamRDQjNhV1IwYUQwaU1USTRJaUJvWldsbmFIUTlJakV5T0NJZ2NuZzlJalFpSUdacGJHdzlJaU0yTmpZMk5qWWlMejQ4ZEdWNGRDQjRQU0kyTkNJZ2VUMGlOalFpSUdacGJHdzlJaU0yTmpZMk5qWWlJR1p2Ym5RdGMybDZaVDBpTWpRaUlIUmxlSFF0WVc1amFHOXlQU0p0YVdSa2JHVWlQaUZzUEM5MFpYaDBQand2YzNabktRPT0iLCJzaXplcyI6IjEyOHgxMjgiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCJ9XX0=">
+    
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiByeD0iNCIgZmlsbD0iIzY2NjY2NiIvPgo8dGV4dCB4PSI2NCIgeT0iNjQiIGZpbGw9IiM2NjY2NjYiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPiFsPC90ZXh0Pgo8L3N2Zz4K">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --bg-card: rgba(26, 26, 46, 0.8);
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent: #6366f1;
+            --accent-hover: #5855eb;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.2) 0%, transparent 50%);
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(1deg); }
+            66% { transform: translateY(20px) rotate(-1deg); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(102, 102, 241, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(102, 102, 241, 0.8)); }
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .quote-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 4rem;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .quote-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .quote-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            border-radius: 24px;
+            padding: 2px;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            position: relative;
+            animation: typewriter 2s ease-out 0.8s both;
+            letter-spacing: 0.02em;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.4;
+            font-weight: 100;
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 500;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1.5s both;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 1rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+            animation: slideUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            background: var(--gradient);
+            border: none;
+            border-radius: 50px;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px rgba(102, 102, 241, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(102, 102, 241, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(26, 26, 46, 0.8);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        .pill {
+            background: rgba(102, 102, 241, 0.1);
+            border: 1px solid rgba(102, 102, 241, 0.3);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            color: var(--accent);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pill:hover, .pill.active {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .loading {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(102, 102, 241, 0.3);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .quote-card {
+                padding: 2.5rem 2rem;
+                margin: 1rem;
+                border-radius: 24px;
+            }
+
+            .quote-text {
+                font-size: 1.4rem;
+                line-height: 1.5;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* PWA Install prompt */
+        .install-prompt {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--gradient);
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">QuoteVerse</h1>
+            <p class="subtitle">Daily inspiration for your journey</p>
+        </header>
+
+
+
+        <div class="quote-card">
+            <div class="loading" id="loading"></div>
+            <div class="quote-content" id="quoteContent">
+                <p class="quote-text" id="quoteText"></p>
+                <p class="quote-author" id="quoteAuthor"></p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" id="newQuoteBtn">✨ New Quote</button>
+        </div>
+    </div>
+
+    <div class="install-prompt" id="installPrompt">
+        <div>📱 Install QuoteVerse</div>
+    </div>
+
+    <script>
+        class QuoteApp {
+            constructor() {
+                this.allQuotes = [
+                    { text: "არასოდეს მიიღო ღალატი ვინმესგან, აპატიე, მაგრამ არასოდეს დაივიწყო", author: "Millennium" },
+                  { text: "დააწესე საზღვრები სხვებთან, თორემ შენი სიკეთის გამო გაწყენინებენ.", author: "Millennium" },
+                  { text: "არასოდეს აიძულო ვინმე, რომ შენ აგირჩიოს, სანაცვლოდ, მიეცი ადამიანებს თავისუფლება, გააკეთონ ის, რაც სურთ.  ", author: "Millennium" },
+                  { text: "განივითარე უნარი, თქვა უარი იმაზე, რაც შენთვის სარგებელს არ მოაქვს.", author: "გMillennium" },
+                  { text: "ნაკლები ილაპარაკე და შეინარჩუნე შენი ცხოვრება საიდუმლოდ", author: "Millennium" },
+                  { text: "არაფერი მიიღო ახლოს გულთან, ეცადე იყო ნაკლებად ემოციური და უფრო მშვიდი", author: "Millennium" },
+                  { text: "ზოგჯერ რთული გამოცდილება გჭირდება, რათა აღმოაჩინო შენი ნამდვილი არსი", author: "Millennium" },
+                  { text: "იმუშავე იმაზე, რასაც ვერავინ წაგართმევს.", author: "Millennium" },
+                  { text: "ნაკლები ილაპარაკე, მეტი დააკვირდი, ყველაფერს არ სჭირდება რეაქცია", author: "Millennium" },
+                  { text: "გქონდეს ძლიერი გონება, არაფერი მიიღო ახლოს გულთან და არ ეძებო სხვებისგან დასტური", author: "Millennium" },
+                  { text: "პრაქტიკა არის გამოცდილება, რომელსაც მივყავართ სრულყოფილებამდე", author: "Millennium" },
+                  { text: "რაც უფრო პატარა ადამიანი ხარ მით უფრო იხილავ გლობალურ საკითხებს", author: "Millennium" },
+                  { text: "იყავი შეშინებული, როცა სხვები თავდაჯერებულნი არიან, და თავდაჯერებული, როცა სხვები შეშინებულნი არიან", author: "Millennium" },
+                    { text: "It does not matter how slowly you go as long as you do not stop.", author: "უორენ ბაფეტი" }
+                ];
+                
+                this.currentQuote = null;
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.loadRandomQuoteOnStart();
+                this.setupPWA();
+            }
+
+            bindEvents() {
+                document.getElementById('newQuoteBtn').addEventListener('click', () => this.loadRandomQuote());
+
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    if (e.code === 'Space') {
+                        e.preventDefault();
+                        this.loadRandomQuote();
+                    }
+                });
+            }
+
+            loadRandomQuoteOnStart() {
+                // Immediately show a random quote without loading animation
+                const randomQuote = this.allQuotes[Math.floor(Math.random() * this.allQuotes.length)];
+                this.displayQuoteInstantly(randomQuote);
+            }
+
+            loadRandomQuote() {
+                this.showLoading();
+                
+                setTimeout(() => {
+                    const randomQuote = this.allQuotes[Math.floor(Math.random() * this.allQuotes.length)];
+                    this.displayQuote(randomQuote);
+                    this.hideLoading();
+                }, 600);
+            }
+
+            displayQuoteInstantly(quote) {
+                this.currentQuote = quote;
+                
+                const quoteText = document.getElementById('quoteText');
+                const quoteAuthor = document.getElementById('quoteAuthor');
+                
+                quoteText.textContent = quote.text;
+                quoteAuthor.textContent = `— ${quote.author}`;
+            }
+
+            displayQuote(quote) {
+                this.currentQuote = quote;
+                
+                const quoteText = document.getElementById('quoteText');
+                const quoteAuthor = document.getElementById('quoteAuthor');
+                
+                // Animate out
+                quoteText.style.opacity = '0';
+                quoteAuthor.style.opacity = '0';
+                
+                setTimeout(() => {
+                    quoteText.textContent = quote.text;
+                    quoteAuthor.textContent = `— ${quote.author}`;
+                    
+                    // Animate in
+                    quoteText.style.opacity = '1';
+                    quoteAuthor.style.opacity = '1';
+                }, 300);
+            }
+
+            showLoading() {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('quoteContent').style.opacity = '0.5';
+            }
+
+            hideLoading() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('quoteContent').style.opacity = '1';
+            }
+
+            setupPWA() {
+                // Register service worker
+                if ('serviceWorker' in navigator) {
+                    const swCode = `
+                        const CACHE_NAME = 'quoteverse-v1';
+                        const urlsToCache = ['/'];
+                        
+                        self.addEventListener('install', event => {
+                            event.waitUntil(
+                                caches.open(CACHE_NAME)
+                                    .then(cache => cache.addAll(urlsToCache))
+                            );
+                        });
+                        
+                        self.addEventListener('fetch', event => {
+                            event.respondWith(
+                                caches.match(event.request)
+                                    .then(response => response || fetch(event.request))
+                            );
+                        });
+                    `;
+                    
+                    const blob = new Blob([swCode], { type: 'application/javascript' });
+                    const swUrl = URL.createObjectURL(blob);
+                    
+                    navigator.serviceWorker.register(swUrl);
+                }
+
+                // Install prompt
+                let deferredPrompt;
+                window.addEventListener('beforeinstallprompt', (e) => {
+                    e.preventDefault();
+                    deferredPrompt = e;
+                    document.getElementById('installPrompt').style.display = 'block';
+                });
+
+                document.getElementById('installPrompt').addEventListener('click', () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        deferredPrompt.userChoice.then(() => {
+                            deferredPrompt = null;
+                            document.getElementById('installPrompt').style.display = 'none';
+                        });
+                    }
+                });
+            }
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', () => {
+            new QuoteApp();
+        });
+
+        // Add CSS for fadeOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateX(0); }
+                to { opacity: 0; transform: translateX(100px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
