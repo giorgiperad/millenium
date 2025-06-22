@@ -203,15 +203,15 @@
         }
 
         .quote-text {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    font-weight: 700; /* Changed from 400 to 700 for bold */
-    color: var(--text-primary);
-    position: relative;
-    animation: fadeInScale 0.6s ease-out;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            position: relative;
+            animation: fadeInScale 0.6s ease-out;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
 
         .quote-text::before,
         .quote-text::after {
@@ -319,14 +319,6 @@
             height: 300px;
         }
 
-        .btn-secondary {
-            background: var(--accent-secondary);
-        }
-
-        .btn-secondary:hover {
-            background: #6d28d9;
-        }
-
         .btn-success {
             background: var(--success);
         }
@@ -371,20 +363,6 @@
 
         .notification.show {
             transform: translateX(0);
-        }
-
-        .favorite-indicator {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            font-size: 1.5rem;
-            color: #ef4444;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .favorite-indicator.show {
-            opacity: 1;
         }
 
         .progress-bar {
@@ -523,19 +501,10 @@
                 <span>📚</span>
                 <span>Quote <span id="currentIndex">1</span>/<span id="totalQuotes">15</span></span>
             </div>
-            <div class="stat">
-                <span>❤️</span>
-                <span><span id="favoriteCount">0</span> Favorites</span>
-            </div>
-            <div class="stat">
-                <span>👁️</span>
-                <span><span id="viewCount">0</span> Views</span>
-            </div>
         </div>
 
         <div class="quote-card" data-tilt data-tilt-max="3" data-tilt-speed="400" data-tilt-perspective="1000">
             <div class="quote-category" id="quoteCategory">Wisdom</div>
-            <div class="favorite-indicator" id="favoriteIndicator">❤️</div>
             <div class="loading" id="loading"></div>
             <div class="quote-content" id="quoteContent">
                 <p class="quote-text georgian" id="quoteText" lang="ka"></p>
@@ -548,10 +517,6 @@
                 <span>✨</span>
                 <span>New Quote</span>
             </button>
-            <button class="btn btn-secondary" id="favoriteBtn">
-                <span>❤️</span>
-                <span>Favorite</span>
-            </button>
             <button class="btn btn-success" id="shareBtn">
                 <span>🔗</span>
                 <span>Share</span>
@@ -561,7 +526,7 @@
 
     <div class="notification" id="notification">
         <span id="notificationIcon">✅</span>
-        <span id="notificationText">Quote saved to favorites!</span>
+        <span id="notificationText">Quote copied to clipboard!</span>
     </div>
 
     <div class="install-prompt" id="installPrompt">
@@ -578,28 +543,25 @@
                     { text: "განივითარე უნარი, თქვა უარი იმაზე, რაც შენთვის სარგებელს არ მოაქვს.", author: "Millennium" },
                     { text: "ნაკლები ილაპარაკე და შეინარჩუნე შენი ცხოვრება საიდუმლოდ", author: "Millennium" },
                     { text: "არაფერი მიიღო ახლოს გულთან, ეცადე იყო ნაკლებად ემოციური და უფრო მშვიდი", author: "Millennium" },
-                    { text: "ზოგჯერ �რთული გამოცდილება გჭირდება, რათა აღმოაჩინო შენი ნამდვილი არსი", author: "Millennium" },
+                    { text: "ზოგჯერ რთული გამოცდილება გჭირდება, რათა აღმოაჩინო შენი ნამდვილი არსი", author: "Millennium" },
                     { text: "იმუშავე იმაზე, რასაც ვერავინ წაგართმევს.", author: "Millennium" },
                     { text: "ნაკლები ილაპარაკე, მეტი დააკვირდი, ყველაფერს არ სჭირდება რეაქცია", author: "Millennium" },
                     { text: "გქონდეს ძლიერი გონება, არაფერი მიიღო ახლოს გულთან და არ ეძებო სხვებისგან დასტური", author: "Millennium" },
                     { text: "რაც უფრო პატარა ადამიანი ხარ მით უფრო იხილავ გლობალურ საკითხებს", author: "Millennium" },
                     { text: "იყავი შეშინებული, როცა სხვები თავდაჯერებულნი არიან, და თავდაჯერებული, როცა სხვები შეშინებულნი არიან", author: "Warren Buffett" },
                     { text: "There's a time to go long, a time to go short and a time to go fishing", author: "Jesse Livermore" },
-                     { text: "პესიმისტები ჭკვიანები ჩანან. მაგრამ საბოლოოდ ოპტიმისტები მდიდრდებიან.", author: "##" },
+                    { text: "პესიმისტები ჭკვიანები ჩანან. მაგრამ საბოლოოდ ოპტიმისტები მდიდრდებიან.", author: "##" },
                     { text: "ნუ იყიდი იმიტომ, რომ იაფია, იყიდე, რადგან ღირებულია.", author: "კარლ აიკანი" }
                 ];
                 
                 this.currentQuoteIndex = 0;
                 this.lastQuoteIndex = -1;
-                this.favorites = new Set();
-                this.viewCount = 0;
                 this.usedQuotes = new Set();
                 
                 this.init();
             }
 
             init() {
-                this.loadDataFromMemory();
                 this.bindEvents();
                 this.loadRandomQuoteOnStart();
                 this.setupPWA();
@@ -607,30 +569,14 @@
                 this.updateStats();
             }
 
-            loadDataFromMemory() {
-                // Initialize in-memory data
-                this.favorites = new Set();
-                this.viewCount = 0;
-                this.usedQuotes = new Set();
-            }
-
-            saveDataToMemory() {
-                // Data persists only during the session
-                // No actual saving needed for memory-only storage
-            }
-
             bindEvents() {
                 document.getElementById('newQuoteBtn').addEventListener('click', () => this.loadRandomQuote());
-                document.getElementById('favoriteBtn').addEventListener('click', () => this.toggleFavorite());
                 document.getElementById('shareBtn').addEventListener('click', () => this.shareQuote());
                 
                 document.addEventListener('keydown', (e) => {
                     if (e.code === 'Space' && !e.target.matches('button')) {
                         e.preventDefault();
                         this.loadRandomQuote();
-                    } else if (e.code === 'KeyF' && !e.target.matches('button')) {
-                        e.preventDefault();
-                        this.toggleFavorite();
                     }
                 });
 
@@ -655,7 +601,7 @@
                     }
                 }
 
-                // If no available indices (shouldn't happen), use any except last
+                // If no available indices, use any except last
                 if (availableIndices.length === 0) {
                     availableIndices = this.allQuotes.map((_, i) => i).filter(i => i !== this.lastQuoteIndex);
                 }
@@ -671,7 +617,6 @@
                 this.lastQuoteIndex = randomIndex;
                 this.usedQuotes.add(randomIndex);
                 this.displayQuoteInstantly(this.allQuotes[randomIndex]);
-                this.viewCount++;
                 this.updateStats();
             }
 
@@ -699,7 +644,6 @@
                     this.currentQuoteIndex = newIndex;
                     
                     this.displayQuote(this.allQuotes[newIndex]);
-                    this.viewCount++;
                     this.updateStats();
                     this.hideLoading();
                     
@@ -717,8 +661,6 @@
                 quoteText.textContent = quote.text;
                 quoteAuthor.textContent = `— ${quote.author}`;
                 quoteCategory.textContent = quote.category;
-                
-                this.updateFavoriteIndicator();
             }
 
             displayQuote(quote) {
@@ -738,43 +680,7 @@
                     quoteText.style.animation = 'fadeInScale 0.6s ease-out forwards';
                     quoteAuthor.style.animation = 'fadeIn 0.6s ease-out 0.2s forwards';
                     quoteCategory.style.animation = 'fadeIn 0.6s ease-out 0.1s forwards';
-                    
-                    this.updateFavoriteIndicator();
                 }, 300);
-            }
-
-            toggleFavorite() {
-                const currentQuote = this.allQuotes[this.currentQuoteIndex];
-                const quoteId = `${currentQuote.author}-${currentQuote.text.substring(0, 20)}`;
-                
-                if (this.favorites.has(quoteId)) {
-                    this.favorites.delete(quoteId);
-                    this.showNotification('❌', 'Removed from favorites');
-                } else {
-                    this.favorites.add(quoteId);
-                    this.showNotification('❤️', 'Added to favorites!');
-                }
-                
-                this.updateFavoriteIndicator();
-                this.updateStats();
-                this.saveDataToMemory();
-            }
-
-            updateFavoriteIndicator() {
-                const currentQuote = this.allQuotes[this.currentQuoteIndex];
-                const quoteId = `${currentQuote.author}-${currentQuote.text.substring(0, 20)}`;
-                const favoriteIndicator = document.getElementById('favoriteIndicator');
-                const favoriteBtn = document.getElementById('favoriteBtn');
-                
-                if (this.favorites.has(quoteId)) {
-                    favoriteIndicator.classList.add('show');
-                    favoriteBtn.classList.add('btn-success');
-                    favoriteBtn.innerHTML = '<span>❤️</span><span>Favorited</span>';
-                } else {
-                    favoriteIndicator.classList.remove('show');
-                    favoriteBtn.classList.remove('btn-success');
-                    favoriteBtn.innerHTML = '<span>🤍</span><span>Favorite</span>';
-                }
             }
 
             shareQuote() {
@@ -854,8 +760,6 @@
             updateStats() {
                 document.getElementById('currentIndex').textContent = this.usedQuotes.size;
                 document.getElementById('totalQuotes').textContent = this.allQuotes.length;
-                document.getElementById('favoriteCount').textContent = this.favorites.size;
-                document.getElementById('viewCount').textContent = this.viewCount;
             }
 
             updateProgress(percentage) {
@@ -908,7 +812,7 @@
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
 
-                const particlesArray = [];
+                const particleArray = [];
                 const numberOfParticles = 50;
 
                 class Particle {
@@ -966,15 +870,15 @@
 
                 function initParticles() {
                     for (let i = 0; i < numberOfParticles; i++) {
-                        particlesArray.push(new Particle());
+                        particleArray.push(new Particle());
                     }
                 }
 
                 function animateParticles() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    for (let i = 0; i < particlesArray.length; i++) {
-                        particlesArray[i].update();
-                        particlesArray[i].draw();
+                    for (let i = 0; i < particleArray.length; i++) {
+                        particleArray[i].update();
+                        particleArray[i].draw();
                     }
                     requestAnimationFrame(animateParticles);
                 }
