@@ -572,26 +572,21 @@
         class QuoteApp {
             constructor() {
                 this.allQuotes = [
-                    { text: "არასოდეს მიიღო ღალატი ვინმესგან, აპატიე, მაგრამ არასოდეს დაივიწყო", author: "Millennium", category: "Wisdom" },
-                    { text: "დააწესე საზღვრები სხვებთან, თორემ შენი სიკეთის გამო გაწყენინებენ.", author: "Millennium", category: "Boundaries" },
-                    { text: "არასოდეს აიძულო ვინმე, რომ შენ აგირჩიოს, სანაცვლოდ, მიეცი ადამიანებს თავისუფლება, გააკეთონ ის, რაც სურთ.", author: "Millennium", category: "Freedom" },
-                    { text: "განივითარე უნარი, თქვა უარი იმაზე, რაც შენთვის სარგებელს არ მოაქვს.", author: "Millennium", category: "Self-Care" },
-                    { text: "ნაკლები ილაპარაკე და შეინარჩუნე შენი ცხოვრება საიდუმლოდ", author: "Millennium", category: "Privacy" },
-                    { text: "არაფერი მიიღო ახლოს გულთან, ეცადე იყო ნაკლებად ემოციური და უფრო მშვიდი", author: "Millennium", category: "Peace" },
-                    { text: "ზოგჯერ რთული გამოცდილება გჭირდება, რათა აღმოაჩინო შენი ნამდვილი არსი", author: "Millennium", category: "Growth" },
-                    { text: "იმუშავე იმაზე, რასაც ვერავინ წაგართმევს.", author: "Millennium", category: "Self-Improvement" },
-                    { text: "ნაკლები ილაპარაკე, მეტი დააკვირდი, ყველაფერს არ სჭირდება რეაქცია", author: "Millennium", category: "Mindfulness" },
-                    { text: "გქონდეს ძლიერი გონება, არაფერი მიიღო ახლოს გულთან და არ ეძებო სხვებისგან დასტური", author: "Millennium", category: "Strength" },
-                    { text: "რაც უფრო პატარა ადამიანი ხარ მით უფრო იხილავ გლობალურ საკითხებს", author: "Millennium", category: "Perspective" },
-                    { text: "იყავი შეშინებული, როცა სხვები თავდაჯერებულნი არიან, და თავდაჯერებული, როცა სხვები შეშინებულნი არიან", author: "Warren Buffett", category: "Investment" },
-                    { text: "There's a time to go long, a time to go short and a time to go fishing", author: "Jesse Livermore", category: "Trading" },
-                    { text: "პესიმისტები ჭკვიანები ჩანან. მაგრამ საბოლოოდ ოპტიმისტები მდიდრდებიან.", author: "Jesse Livermore", category: "Optimism" },
-                    { text: "ნუ იყიდი იმიტომ, რომ იაფია, იყიდე, რადგან ღირებულია.", author: "კარლ აიკანი", category: "Value" },
-                    { text: "წარმატება არის მარცხის შემდეგ მარცხიდან გადასვლის უნარი ენთუზიაზმის დაკარგვის გარეშე", author: "Winston Churchill", category: "Success" },
-                    { text: "ერთადერთი გზა, რომ დიდი საქმე გააკეთო, არის ის, რაც აკეთებ, გიყვარდეს", author: "Steve Jobs", category: "Passion" },
-                    { text: "ცხოვრება ის არ არის, რაც შენთან ხდება, არამედ ის, თუ როგორ რეაგირებ მასზე", author: "Epictetus", category: "Philosophy" },
-                    { text: "ყოველი ჩვენი ოცნების მიღწევა შესაძლებელია, თუ გვქონდეს სიმამაცე, რომ მივყვეთ მათ", author: "Walt Disney", category: "Dreams" },
-                    { text: "არ იყო შეშინებული ნელა წასვლისა, იყო შეშინებული გაჩერების", author: "Chinese Proverb", category: "Progress" }
+                    { text: "არასოდეს მიიღო ღალატი ვინმესგან, აპატიე, მაგრამ არასოდეს დაივიწყო", author: "Millennium" },
+                    { text: "დააწესე საზღვრები სხვებთან, თორემ შენი სიკეთის გამო გაწყენინებენ.", author: "Millennium" },
+                    { text: "არასოდეს აიძულო ვინმე, რომ შენ აგირჩიოს, სანაცვლოდ, მიეცი ადამიანებს თავისუფლება, გააკეთონ ის, რაც სურთ.", author: "Millennium" },
+                    { text: "განივითარე უნარი, თქვა უარი იმაზე, რაც შენთვის სარგებელს არ მოაქვს.", author: "Millennium" },
+                    { text: "ნაკლები ილაპარაკე და შეინარჩუნე შენი ცხოვრება საიდუმლოდ", author: "Millennium" },
+                    { text: "არაფერი მიიღო ახლოს გულთან, ეცადე იყო ნაკლებად ემოციური და უფრო მშვიდი", author: "Millennium" },
+                    { text: "ზოგჯერ �რთული გამოცდილება გჭირდება, რათა აღმოაჩინო შენი ნამდვილი არსი", author: "Millennium" },
+                    { text: "იმუშავე იმაზე, რასაც ვერავინ წაგართმევს.", author: "Millennium" },
+                    { text: "ნაკლები ილაპარაკე, მეტი დააკვირდი, ყველაფერს არ სჭირდება რეაქცია", author: "Millennium" },
+                    { text: "გქონდეს ძლიერი გონება, არაფერი მიიღო ახლოს გულთან და არ ეძებო სხვებისგან დასტური", author: "Millennium" },
+                    { text: "რაც უფრო პატარა ადამიანი ხარ მით უფრო იხილავ გლობალურ საკითხებს", author: "Millennium" },
+                    { text: "იყავი შეშინებული, როცა სხვები თავდაჯერებულნი არიან, და თავდაჯერებული, როცა სხვები შეშინებულნი არიან", author: "Warren Buffett" },
+                    { text: "There's a time to go long, a time to go short and a time to go fishing", author: "Jesse Livermore" },
+                     { text: "პესიმისტები ჭკვიანები ჩანან. მაგრამ საბოლოოდ ოპტიმისტები მდიდრდებიან.", author: "##" },
+                    { text: "ნუ იყიდი იმიტომ, რომ იაფია, იყიდე, რადგან ღირებულია.", author: "კარლ აიკანი" }
                 ];
                 
                 this.currentQuoteIndex = 0;
